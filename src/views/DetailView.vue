@@ -1,4 +1,23 @@
 <script setup>
+import {onBeforeMount} from 'vue'
+import {useRoute} from 'vue-router'
+import {  storeToRefs } from 'pinia'
+import {useCharacterStore} from '../stores/characters'
+
+const route = useRoute()
+
+const characterStore = useCharacterStore()
+const {fetchOneCharacter}  = characterStore
+const { currentCharacter } = storeToRefs(characterStore)
+
+
+onBeforeMount(async ()=>{
+    // récupérer l'id dans l'url
+    const {params:{charId}} = route
+    await fetchOneCharacter(charId)
+    console.log(currentCharacter.value)
+
+})
 
 </script>
 <template>
@@ -8,14 +27,14 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" :src="currentCharacter.image" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder">Personnage</h5>
+                                <h5 class="fw-bolder">{{currentCharacter.name}}</h5>
                                 <!-- Product price-->
-                                Infos
+                                {{currentCharacter.status}}
                             </div>
                         </div>
                         

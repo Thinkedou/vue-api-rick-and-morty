@@ -2,15 +2,28 @@ import { ref, computed } from 'vue'
 import { defineStore }   from 'pinia'
 import ky from 'ky'
 
+const API_ENDPOINT = 'https://rickandmortyapi.com/api/'
+
 export const useCharacterStore = defineStore('characters', () => {
   
-  const allCharacters = ref([])
+  const allCharacters    = ref([])
+  const currentCharacter = ref({})
 
   const fetchAllCharacters = async ()=>{
-    const tryToFetch = await ky.get('https://rickandmortyapi.com/api/character').json()
+    const tryToFetch = await ky.get(`${API_ENDPOINT}character`).json()
     const {results}  = tryToFetch
-    console.log(results)
     allCharacters.value = results
   }
-  return { allCharacters,fetchAllCharacters }
+
+  const fetchOneCharacter = async (charId)=>{
+    const tryToFetch = await ky.get(`${API_ENDPOINT}character/${charId}`).json()
+    currentCharacter.value = tryToFetch
+  }
+
+  return { 
+    allCharacters,
+    currentCharacter,
+    fetchOneCharacter,
+    fetchAllCharacters
+   }
 })
