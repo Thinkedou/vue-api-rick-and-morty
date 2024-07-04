@@ -43,7 +43,7 @@ console.log(json)
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
 </template>
-
+  
 <style scoped>
 header {
   line-height: 1.5;
