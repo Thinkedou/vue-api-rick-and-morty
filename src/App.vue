@@ -1,12 +1,5 @@
 <script setup>
 import {  RouterView } from 'vue-router'
-import ky from 'ky';
-
-
-const json =  ky.get('https://rickandmortyapi.com/api/character').json()
-
-const {results} = json 
-console.log(json)
 
 </script>
 
@@ -43,7 +36,7 @@ console.log(json)
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
 </template>
-  
+
 <style scoped>
 header {
   line-height: 1.5;

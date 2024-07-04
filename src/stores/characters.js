@@ -9,9 +9,8 @@ export const useCharacterStore = defineStore('characters', () => {
   const fetchAllCharacters = async ()=>{
     const tryToFetch = await ky.get('https://rickandmortyapi.com/api/character').json()
     const {results}  = tryToFetch
+    console.log(results)
     allCharacters.value = results
   }
-
-
   return { allCharacters,fetchAllCharacters }
 })
