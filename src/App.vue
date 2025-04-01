@@ -1,19 +1,19 @@
 <script setup>
-import {  RouterView } from 'vue-router'
+import {  RouterView, RouterLink } from 'vue-router'
 
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <span class="navbar-brand" >Async / Await</span>
+                <span class="navbar-brand" >Async / Await (pinia 🍍 + ky 🍒)</span>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item">
-                        	<a class="nav-link active" aria-current="page" href="#!">Home</a>
+                          <router-link to="/" class="nav-link">Home</router-link>
                         </li>
                         <li class="nav-item">
-                        	<a class="nav-link" href="#!">Liste</a>
+                          <router-link to="/list" class="nav-link">Liste</router-link>
                         </li>
                         
                     </ul>
@@ -26,7 +26,7 @@ import {  RouterView } from 'vue-router'
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder"> ⚡ API CALLING ⚡</h1>
-                <p class="lead fw-normal text-white-50 mb-0"> With axios or fetch </p>
+                <p class="lead fw-normal text-white-50 mb-0"> With ky (🍒) </p>
             </div>
         </div>
     </header>
